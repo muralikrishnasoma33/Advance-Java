@@ -1,0 +1,160 @@
+                   
+                   COLLECTIONS IN JAVA 
+=====================================================
+Definition :
+--------------
+     Java Collection Framework (JCF) is a set of classes and interfaces that provide ready-made 
+     data structures to store and manipulate groups of objects efficiently.
+-> Java provides built-in collection classes like List, Set, Map and Queue, so developers don’t need 
+   to write their own data management algorithms.
+-> The Collection Framework improves productivity by making code more reusable, maintainable and faster to develop.
+
+             Features of Java Collection Framework
+        ----------------------------------------------
+-> Provides ready-to-use data structures (e.g., ArrayList, HashSet, HashMap).9
+-> Offers interfaces (Collection, List, Set, Map, Queue) to define standard behaviors.
+-> Supports dynamic resizing, unlike arrays with a fixed size.
+-> Includes algorithms (sorting, searching, iteration) via the Collections utility class.
+-> Improves code reusability and performance by reducing boilerplate code.
+    
+
+Built-in Collection classes:
+----------------------------
+1.List (IF) :
+   List has 1.ArrayList, 
+            2.LinkedList, 
+            3.Vector 
+              -> Stack
+2.Set (IF) :
+   Set has  1.Hashset,   
+            2.SortedSet(IF)
+              -> NavigableSet (IF)   
+                  -> TreeSet   
+3.Queue (IF) :
+   Queue has 1.PriorityQueue
+             2.Deque (IF)
+               -> ArrayDeque
+               -> LinkedList
+
+============================================               
+                   MAP (IF)
+============================================  
+1.HashMap (IF) :
+     Hashmap map LinkedHashMap
+2.SortedMap (IF) :
+     Sorted map has 1.NavigableMap
+                      -> TreeMap  
+
+
+====================================================                     
+                       LIST(IF)
+====================================================                                   
+                    ArrayList :
+            ========================
+DEFINITION:
+---------------            
+    An ArrayList in Java is a resizable (or dynamic) array from the java.util package 
+that can grow or shrink automatically as elements are added or removed, unlike regular 
+arrays with a fixed size. 
+
+    1.Indexed Access           : Elements can be accessed using their index, just like arrays.
+    2.Allows Duplicates        : Duplicate elements are allowed.
+    3.Maintains Insertion Order: Elements are stored in the order they are inserted.
+
+                 ArrayList Constructors in Java
+              =====================================
+ Java provides multiple constructors to create an ArrayList based on different requirements:
+1. ArrayList()
+ Creates an empty ArrayList with default initial capacity.
+        ---------------------------------------------
+         ArrayList<Integer> arr = new ArrayList<>(); 
+        ---------------------------------------------
+2. ArrayList<Integer> arr = new ArrayList<>()
+ Creates an ArrayList initialized with elements from the specified collection.
+        -----------------------------------------------------
+         ArrayList<String> arr = new ArrayList<>(collection); 
+        -----------------------------------------------------
+3. ArrayList(int initialCapacity)
+ This constructor is used to build an array list with the initial capacity being specified.
+        ---------------------------------------------
+         ArrayList<Double> arr = new ArrayList<>(20);
+        ---------------------------------------------
+
+Operations in ArrayList :
+--------------------------
+👉 Import:
+    -> import java.util.ArrayList;
+👉 Create an ArrayList:
+    -> ArrayList<String> list = new ArrayList<>();
+
+🔹 1. Adding Elements
+-----------------------
+    Method	                          Description	                        Example
+-----------------------------------------------------------------------------------------------
+   add(E e)	                Adds element to the end of the list	        list.add("Apple");
+   add(int index, E e)	    Adds element at specific position	        list.add(1, "Banana");
+   addAll(Collection c)	    Adds all elements from another collection	list.addAll(otherList); 
+
+🔹 2. Accessing Elements
+--------------------------
+      Method	                    Description	                        Example
+------------------------------------------------------------------------------------------------
+    get(int index)	    Returns element at the given index	           list.get(0);
+    size()	            Returns number of elements	                   list.size();
+    isEmpty()	        Returns true if list has no elements	       list.isEmpty();
+
+🔹 3. Updating Elements
+-------------------------
+| Method                | Description               | Example                 |
+| --------------------- | ------------------------- | ----------------------- |
+| `set(int index, E e)` | Replaces element at index | `list.set(0, "Mango");` |
+
+🔹 4. Removing elements
+-------------------------
+| Method              | Description                                  | Example                  |
+| ------------------- | -------------------------------------------- | ------------------------ |
+| `remove(int index)` | Removes element at given index               | `list.remove(2);`        |
+| `remove(Object o)`  | Removes first occurrence of specified object | `list.remove("Banana");` |
+| `clear()`           | Removes all elements                         | `list.clear();`          |
+
+🔹 5. Searching
+-------------------
+| Method                  | Description                           | Example                      |
+| ----------------------- | ------------------------------------- | ---------------------------- |
+| `contains(Object o)`    | Checks if list contains given element | `list.contains("Apple");`    |
+| `indexOf(Object o)`     | Returns index of first occurrence     | `list.indexOf("Apple");`     |
+| `lastIndexOf(Object o)` | Returns index of last occurrence      | `list.lastIndexOf("Apple");` |
+
+🔹 6. Iterating
+------------------
+| Method           | Description           | Example                                           |
+| ---------------- | --------------------- | ------------------------------------------------- |
+| `forEach()`      | Iterates using lambda | `list.forEach(item -> System.out.println(item));` |
+| `iterator()`     | Returns iterator      | `Iterator<String> it = list.iterator();`          |
+| `listIterator()` | Returns list iterator | `ListIterator<String> it = list.listIterator();`  |
+
+🔹 7. Conversion
+-------------------
+| Method      | Description            | Example                                                      |
+| ----------- | ---------------------- | ------------------------------------------------------------ |
+| `toArray()` | Converts list to array | `Object[] arr = list.toArray();`                             |
+| `clone()`   | Creates a shallow copy | `ArrayList<String> copy = (ArrayList<String>) list.clone();` |
+
+🔹 8. Comparison
+-------------------
+| Method             | Description                     | Example                   |
+| ------------------ | ------------------------------- | ------------------------- |
+| `equals(Object o)` | Compares two lists for equality | `list.equals(otherList);` |
+
+🔹 9. Retaining & Removing Collections
+-----------------------------------------
+| Method                    | Description                                       | Example                       |
+| ------------------------- | ------------------------------------------------- | ----------------------------- |
+| `removeAll(Collection c)` | Removes all elements also in another collection   | `list.removeAll(otherList);`  |
+| `retainAll(Collection c)` | Keeps only elements present in another collection | `list.retainAll(commonList);` |
+
+
+
+
+
+        
