@@ -134,7 +134,7 @@ public class Linkedlist {
         System.out.println("Removes Last Element <removeLast()> : "+s);
         System.out.println(LL);
 
-        //poll() --> Retrieves and removes head   
+        //poll() --> Retrieves and removes head / front  
         System.out.println("\n");
         String x = LL.poll();
         System.out.println("Retrieves and removes first element <poll()> : "+x);
