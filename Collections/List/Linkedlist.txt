@@ -1,0 +1,204 @@
+==========================================================================                              
+                              Linked List
+===========================================================================
+===========================================================================
+Definition :
+------------
+1.LinkedList is a doubly linked list implementation of the List and Deque interfaces.
+                                                               -----    ------
+2.It can store duplicate elements and maintains insertion order.
+3.It is part of the java.util package.   
+
+👉 Import:
+        --> import java.util.LinkedList;
+
+👉 Create a LinkedList:
+        --> LinkedList<String> list = new LinkedList<>();
+
+
+
+        🧩 “It’s a Doubly Linked List — each element (called a node) stores…”
+=======================================================================================
+
+    --> A LinkedList in Java is built from nodes.
+    --> Each node is like a small box that holds two types of information:
+1️⃣ The data
+ --> The actual value you want to store (for example, 10, "Apple", etc.)
+
+2️⃣ The links (or references)
+ --> One link to the next node
+ --> One link to the previous node
+
+This is why it’s called a doubly linked list — because each node has two links (forward and backward).
+
+🧱 Visualization :
+--------------------
+[A] <-> [B] <-> [C]
+
+Here’s what’s happening inside:
+
+Node  |	Previous	 |   Data  |	Next       |
+-----------------------------------------------|
+ A	  |    null	     |   "A"   |  points to B  |
+ B	  |  points to A |	 "B"   |  points to C  |
+ C	  |  points to B |	 "C"   |	 null      |
+
+➡️ Each node knows who comes before it and who comes after it.
+➡️ The list starts at head (A) and ends at tail (C).
+
+
+                           🧱 Meaning of QUEUE in Java
+==========================================================================================
+A Queue is a collection used to store elements in an order, where the first element added is the first one removed.
+👉 This is called the FIFO principle —
+   First In, First Out.
+
+   🧩 Common Queue Methods
+--------------------------------   
+  Method	      Description
+-----------------------------------------------------------------------------------
+  add(E e)	    Adds element at the end of the queue. Throws error if full.
+  offer(E e)	Adds element at end, returns false if full (no error).
+  remove()	    Removes and returns first element. Throws error if empty.
+  poll()	    Removes and returns first element, returns null if empty.
+  element()	    Returns (but doesn’t remove) first element. Throws error if empty.
+  peek()	    Returns (but doesn’t remove) first element, returns null if empty.
+
+
+
+                         🧱 What is DEQUE (Double-Ended Queue)?
+====================================================================================================
+A Deque (pronounced “deck”) is a queue that allows you to add and remove elements from both ends —
+that means front and rear (end).
+
+👉 The name comes from “Double-Ended Queue.”
+
+⚡ Common Deque Methods
+----------------------------------------------------------
+| Method            | Description                         |
+| ----------------- | ----------------------------------- |
+| `addFirst(E e)`   | Adds element at front               |
+| `addLast(E e)`    | Adds element at end                 |
+| `offerFirst(E e)` | Offers (tries to add) at front      |
+| `offerLast(E e)`  | Offers (tries to add) at end        |
+| `removeFirst()`   | Removes from front                  |
+| `removeLast()`    | Removes from end                    |
+| `peekFirst()`     | Gets first element without removing |
+| `peekLast()`      | Gets last element without removing  |
+
+
+                           ⚖️ Comparison: Queue vs Deque
+===============================================================================================
+| Feature         | **Queue**                         | **Deque**                        |
+| --------------- | --------------------------------- | -------------------------------- |
+| Meaning         | Stores elements in **FIFO** order | Stores elements at **both ends** |
+| Add Element     | Only at **end (rear)**            | At **front or end**              |
+| Remove Element  | Only from **front**               | From **front or end**            |
+| Flexibility     | Limited                           | More flexible                    |
+| Implementations | `LinkedList`, `PriorityQueue`     | `LinkedList`, `ArrayDeque`       |
+
+
+===================================================================================================
+                                Methods in LinkedList
+===================================================================================================
+1. Adding Elements :
+--------------------
+| Method                | Description                             | Example                      |
+| --------------------- | --------------------------------------- | ---------------------------- |
+| `add(E e)`            | Adds element to the end                 | `list.add("Apple");`         |
+| `add(int index, E e)` | Adds at specific position               | `list.add(1, "Banana");`     |
+| `addFirst(E e)`       | Adds element at the beginning           | `list.addFirst("Start");`    |
+| `addLast(E e)`        | Adds element at the end                 | `list.addLast("End");`       |
+| `offer(E e)`          | Adds element to the tail (like a queue) | `list.offer("Mango");`       |
+| `offerFirst(E e)`     | Adds at the front                       | `list.offerFirst("Orange");` |
+| `offerLast(E e)`      | Adds at the end                         | `list.offerLast("Grapes");`  |
+----------------------------------------------------------------------------------------------------
+
+2. Accessing Elements :
+-----------------------
+| Method           | Description                                     | Example             |
+| ---------------- | ----------------------------------------------- | ------------------- |
+| `get(int index)` | Get element at position                         | `list.get(1);`      |
+| `getFirst()`     | Returns first element                           | `list.getFirst();`  |
+| `getLast()`      | Returns last element                            | `list.getLast();`   |
+| `peek()`         | Returns head (first element) but doesn’t remove | `list.peek();`      |
+| `peekFirst()`    | Same as `peek()`                                | `list.peekFirst();` |
+| `peekLast()`     | Returns last element                            | `list.peekLast();`  |
+----------------------------------------------------------------------------------------------------
+
+3.Updating Elements :
+---------------------
+| Method                | Description              | Example                  |
+| --------------------- | ------------------------ | ------------------------ |
+| `set(int index, E e)` | Replace element at index | `list.set(2, "Cherry");` |
+----------------------------------------------------------------------------------------------------
+
+4.Removing Elements :
+---------------------
+| Method              | Description                        | Example                 |
+| ------------------- | ---------------------------------- | ----------------------- |
+| `remove()`          | Removes first element              | `list.remove();`        |
+| `remove(int index)` | Removes by index                   | `list.remove(1);`       |
+| `remove(Object o)`  | Removes by value                   | `list.remove("Apple");` |
+| `removeFirst()`     | Removes first element              | `list.removeFirst();`   |
+| `removeLast()`      | Removes last element               | `list.removeLast();`    |
+| `poll()`            | Retrieves and removes head         | `list.poll();`          |
+| `pollFirst()`       | Same as `poll()`                   | `list.pollFirst();`     |
+| `pollLast()`        | Retrieves and removes last element | `list.pollLast();`      |
+| `clear()`           | Removes all elements               | `list.clear();`         |
+----------------------------------------------------------------------------------------------------
+
+5.Searching/Checking :
+----------------------
+| Method                  | Description                   | Example                      |
+| ----------------------- | ----------------------------- | ---------------------------- |
+| `contains(Object o)`    | Checks if element exists      | `list.contains("Apple");`    |
+| `indexOf(Object o)`     | Returns first index           | `list.indexOf("Apple");`     |
+| `lastIndexOf(Object o)` | Returns last index            | `list.lastIndexOf("Apple");` |
+| `isEmpty()`             | Returns true if list is empty | `list.isEmpty();`            |
+| `size()`                | Returns number of elements    | `list.size();`               |
+----------------------------------------------------------------------------------------------------
+
+6. Iterating :
+--------------
+| Method                 | Description                    | Example                                            |
+| ---------------------- | ------------------------------ | -------------------------------------------------- |
+| `iterator()`           | Forward iteration              | `Iterator<String> it = list.iterator();`           |
+| `descendingIterator()` | Backward iteration             | `Iterator<String> it = list.descendingIterator();` |
+| `listIterator()`       | Can move both forward/backward | `ListIterator<String> it = list.listIterator();`   |
+| `forEach()`            | Uses lambda expression         | `list.forEach(item -> System.out.println(item));`  |
+----------------------------------------------------------------------------------------------------
+
+7. Queue / Deque Specific Methods :
+-----------------------------------
+| Method      | Description                   | Example               |
+| ----------- | ----------------------------- | --------------------- |
+| `push(E e)` | Push element to stack (front) | `list.push("Apple");` |
+| `pop()`     | Pop element (remove first)    | `list.pop();`         |
+| `peek()`    | Look at first element         | `list.peek();`        |
+----------------------------------------------------------------------------------------------------
+
+        
+
+
+        Comparison Between ArrayList and LinkedList
+==================================================================
+| Feature                             | **ArrayList**                                  | **LinkedList**                                                   |
+| ----------------------------------- | ---------------------------------------------- | ---------------------------------------------------------------- |
+| **1. Data Structure Used**          | Uses **dynamic array** internally              | Uses **doubly linked list** internally                           |
+| **2. Package**                      | `java.util.ArrayList`                          | `java.util.LinkedList`                                           |
+| **3. Insertion Order**              | Maintains insertion order                      | Maintains insertion order                                        |
+| **4. Duplicates**                   | Allows duplicates                              | Allows duplicates                                                |
+| **5. Random Access (get/set)**      | ✅ **Fast (O(1))** — direct index access        | ❌ **Slow (O(n))** — must traverse nodes                       |
+| **6. Insertion/Deletion in Middle** | ❌ **Slow (O(n))** — requires shifting elements | ✅ **Fast (O(1))** if node reference known                     |
+| **7. Memory Usage**                 | Uses **less memory** (only data stored)        | Uses **more memory** (stores data + 2 pointers: previous & next) |
+| **8. Best for**                     | Frequent **access/read** operations            | Frequent **insert/delete** operations                            |
+| **9. add() Performance**            | Fast if adding at end (amortized O(1))         | Fast if adding anywhere (O(1))                                   |
+| **10. remove() Performance**        | Slow — elements need shifting                  | Fast if node reference known                                     |
+| **11. Search (contains/indexOf)**   | Faster — binary search possible sometimes      | Slower — sequential search only                                  |
+| **12. Implements Interfaces**       | Implements `List`                              | Implements `List`, **`Deque`**, and **`Queue`**                  |
+| **13. Null Elements**               | Allows multiple `null` values                  | Allows multiple `null` values                                    |
+| **14. Iteration Performance**       | Faster iteration due to contiguous memory      | Slower iteration due to node traversal                           |
+| **15. Thread Safety**               | Not synchronized                               | Not synchronized                                                 |
+| **16. When to Use**                 | When you need **frequent access**              | When you need **frequent insertion/deletion**                    |
+| **17. Example Use Case**            | Storing fixed list of items (e.g., names)      | Implementing queue, stack, or scheduler                          |
