@@ -1,0 +1,156 @@
+=====================================================================================================                               
+                                    Vector
+=====================================================================================================
+Definition :
+------------
+--> In Java, a Vector is a class from the java.util package that implements a dynamic array, 
+similar to an ArrayList. However, it is synchronized, which means it is thread-safe — only 
+one thread can access it at a time.
+
+                            import java.util.Vector;
+
+--> A Vector can grow or shrink dynamically as elements are added or removed — unlike normal arrays, 
+which have a fixed size.
+
+Common Constructors :
+----------------------
+Vector()                              // Default size = 10
+Vector(int capacity)                  // Specify initial size
+Vector(int capacity, int increment)   // Specify capacity and growth rate
+Vector(Collection c)                  // Create Vector from another collection
+
+                      ⚖️ Vector vs ArrayList
+--------------------------------------------------------------------
+| Feature             | Vector            | ArrayList            |
+| ------------------- | ----------------- | -------------------- |
+| **Synchronization** | Yes (Thread-safe) | No                   |
+| **Performance**     | Slower            | Faster               |
+| **Growth Rate**     | Doubles capacity  | Increases by 50%     |
+| **Introduced in**   | JDK 1.0           | JDK 1.2              |
+| **Use case**        | Multithreading    | Single-threaded apps |
+
+
+
+
+                =========================================
+                         Is Vector has Stack?
+                ==========================================
+ --> Yes — Stack in Java is actually a subclass of Vector.
+
+ -->  A Stack follows the LIFO principle —
+      The last element inserted is the first one to be removed. 
+
+* So, Stack inherits all the methods of Vector — and adds LIFO (Last-In-First-Out) behavior on top of it.
+
+That means Stack is a Vector with extra methods that make it act like a stack data structure.
+
+
+⚙️ Stack-Specific Methods :
+----------------------------
+| Method             | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| `push(E item)`     | Adds an item on top of the stack.                 |
+| `pop()`            | Removes and returns the top element.              |
+| `peek()`           | Returns (but does not remove) the top element.    |
+| `empty()`          | Returns true if the stack is empty.               |
+| `search(Object o)` | Returns 1-based position of element from the top. |
+
+
+
+⚙️Vector Methods :
+-------------------------
+1. Adding Elements
+--------------------
+| Method                                                 | Description                        |
+| ------------------------------------------------------ | ---------------------------------- |
+| `boolean add(E e)`                                     | Appends element to end.            |
+| `void add(int index, E element)`                       | Inserts at given index.            |
+| `boolean addAll(Collection<? extends E> c)`            | Adds all elements of a collection. |
+| `boolean addAll(int index, Collection<? extends E> c)` | Inserts all elements at index.     |
+| `void addElement(E obj)`                               | (Legacy) Adds element to end.      |
+-------------------------------------------------------------------------------------------------------------
+
+2.Accessing Elements :
+---------------------------
+| Method                                 | Description                    |
+| -------------------------------------- | ------------------------------ |
+| `E get(int index)`                     | Returns element at index.      |
+| `E firstElement()`                     | Returns first element.         |
+| `E lastElement()`                      | Returns last element.          |
+| `int indexOf(Object o)`                | Index of first occurrence.     |
+| `int indexOf(Object o, int index)`     | Index from specific position.  |
+| `int lastIndexOf(Object o)`            | Index of last occurrence.      |
+| `int lastIndexOf(Object o, int index)` | Last index before given index. |
+-------------------------------------------------------------------------------------------------------------
+
+3.Updating Elements :
+------------------------------
+| Method                                | Description              |
+| ------------------------------------- | ------------------------ |
+| `E set(int index, E element)`         | Replaces element.        |
+| `void setElementAt(E obj, int index)` | (Legacy) Sets element.   |
+| `void setSize(int newSize)`           | Changes the vector size. |
+-------------------------------------------------------------------------------------------------------------
+
+4.Removing Elements :
+----------------------------------
+| Method                               | Description                              |
+| ------------------------------------ | ---------------------------------------- |
+| `boolean remove(Object o)`           | Removes first occurrence.                |
+| `E remove(int index)`                | Removes at index.                        |
+| `boolean removeAll(Collection<?> c)` | Removes all present in given collection. |
+| `boolean retainAll(Collection<?> c)` | Keeps only elements in given collection. |
+| `void removeAllElements()`           | (Legacy) Removes all elements.           |
+| `void removeElementAt(int index)`    | (Legacy) Removes at index.               |
+| `boolean removeElement(Object obj)`  | (Legacy) Removes first match.            |
+| `void clear()`                       | Removes all elements.                    |
+-------------------------------------------------------------------------------------------------------------
+
+5.Capacity & Size :
+---------------------------
+| Method                                 | Description                            |
+| -------------------------------------- | -------------------------------------- |
+| `int size()`                           | Returns current number of elements.    |
+| `int capacity()`                       | Returns current capacity.              |
+| `void ensureCapacity(int minCapacity)` | Ensures capacity at least minCapacity. |
+| `void trimToSize()`                    | Reduces capacity to match size.        |
+-------------------------------------------------------------------------------------------------------------
+
+6.Checking/Searching :
+-------------------------------
+| Method                                 | Description                   |
+| -------------------------------------- | ----------------------------- |
+| `boolean contains(Object o)`           | Checks if element exists.     |
+| `boolean containsAll(Collection<?> c)` | Checks if all elements exist. |
+| `boolean isEmpty()`                    | Checks if empty.              |
+-------------------------------------------------------------------------------------------------------------
+
+7.Iteration :
+-------------------
+| Method                                    | Description                       |
+| ----------------------------------------- | --------------------------------- |
+| `Enumeration<E> elements()`               | Returns enumeration.              |
+| `Iterator<E> iterator()`                  | Returns iterator.                 |
+| `ListIterator<E> listIterator()`          | Returns list iterator.            |
+| `ListIterator<E> listIterator(int index)` | Returns list iterator from index. |
+-------------------------------------------------------------------------------------------------------------
+
+8.Conversion / Copying :
+-------------------------------
+| Method                            | Description                     |
+| --------------------------------- | ------------------------------- |
+| `Object clone()`                  | Creates shallow copy.           |
+| `Object[] toArray()`              | Returns array of all elements.  |
+| `<T> T[] toArray(T[] a)`          | Returns array of specific type. |
+| `void copyInto(Object[] anArray)` | Copies elements into array.     |
+-------------------------------------------------------------------------------------------------------------
+
+9.Other Utility Methods :
+-----------------------------------
+| Method                                        | Description                                  |
+| --------------------------------------------- | -------------------------------------------- |
+| `String toString()`                           | Returns string form.                         |
+| `boolean equals(Object o)`                    | Checks equality.                             |
+| `int hashCode()`                              | Returns hash code.                           |
+| `List<E> subList(int fromIndex, int toIndex)` | Returns portion of vector as list.           |
+| `Spliterator<E> spliterator()`                | Returns spliterator for parallel processing. |
