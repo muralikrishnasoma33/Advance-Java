@@ -1,0 +1,120 @@
+==================================================================================================== 
+                                        Set  
+====================================================================================================
+====================================================================================================
+
+Definition :
+--------------
+   A Set in Java is a collection that does not allow duplicate elements.
+-> It is part of the java.util package and is an interface that extends the Collection interface.
+
+Syntax :
+----------
+   --> Set<Type> setName = new HashSet<>();
+
+💡 Why use Set?
+-----------------
+We use a Set when:
+  --> You want to store unique elements (no duplicates allowed).
+  --> The order of elements doesn’t matter (depending on implementation).
+  --> You want fast search, insertion, and deletion (especially with HashSet).
+Example:
+If you want to store student roll numbers where no number repeats, a Set is perfect.
+
+🕓 When to use Set?
+---------------------
+Use a Set when:
+  --> You must ensure uniqueness (like IDs, usernames, etc.).
+  --> You don’t care about insertion order (use HashSet).
+  --> You need sorted data (use TreeSet).
+  --> You want to maintain insertion order (use LinkedHashSet).
+
+⚙️ How Set works
+------------------
+Internally, most Sets use a hash table (like HashSet).
+    > When you add an element:
+It computes a hashcode for the element.
+Checks if that hash already exists in the table.
+If not, the element is added; otherwise, it’s ignored (no duplicates).
+
+
+                   Implementations in Set
+            ==================================
+   
+                               Set
+                                |
+                                |
+                    -------------------------
+                    |           |           |
+                 HashSet  LinkedHashSet   TreeSet
+
+
+
+
+---------------------------------------------------------------------------------------------------                 
+                              1. HashSet
+===================================================================================================                               
+
+1️⃣ Definition :
+------------------
+1. A HashSet in Java is a collection class that implements the Set interface.
+2. It stores unique elements only and does not maintain any order of elements.
+        -> Part of java.util package.
+        -> Internally backed by a HashMap.                
+
+Syntax :
+----------
+         --> HashSet<Type> set = new HashSet<>();
+
+2️⃣ Why use HashSet? :
+----------------------
+We use HashSet because:
+    --> We want unique elements only (no duplicates allowed).
+    --> We need fast insertion, deletion, and search (average O(1) time).
+    --> We don’t care about element order.
+    --> Good for checking existence quickly.   
+
+3️⃣ When to use HashSet :
+-------------------------
+Use HashSet when:
+    --> Uniqueness of elements is required.
+    --> Order of elements does not matter.
+    --> You need fast operations (add, remove, contains).
+    --> You are okay with allowing one null element.    
+
+4️⃣ How HashSet works :
+------------------------
+--> Add element: HashSet uses hashCode() to determine the bucket.
+     If bucket empty → add element.
+     If bucket occupied → checks equals() to avoid duplicates.
+--> Contains element: Computes hash → checks bucket → compares with equals().
+--> Remove element: Computes hash → finds bucket → removes element.    
+
+5️⃣ Total Important Methods in HashSet :
+-----------------------------------------
+| Method                      | Description                                         |
+| --------------------------- | --------------------------------------------------- |
+| `add(E e)`                  | Adds an element (ignored if duplicate)              |
+| `addAll(Collection c)`      | Adds all elements from another collection           |
+| `remove(Object o)`          | Removes element if present                          |
+| `removeAll(Collection c)`   | Removes all elements present in another collection  |
+| `retainAll(Collection c)`   | Retains only elements present in another collection |
+| `contains(Object o)`        | Checks if element exists                            |
+| `containsAll(Collection c)` | Checks if all elements in another collection exist  |
+| `size()`                    | Returns number of elements                          |
+| `isEmpty()`                 | Checks if HashSet is empty                          |
+| `clear()`                   | Removes all elements                                |
+| `iterator()`                | Returns Iterator to traverse elements               |
+| `clone()`                   | Returns shallow copy of HashSet                     |
+| `toArray()`                 | Converts HashSet to array                           |
+| `equals(Object o)`          | Compares with another HashSet                       |
+| `hashCode()`                | Returns hash code of the HashSet                    |
+
+✅ Summary
+--------------
+Definition: HashSet = Set + HashMap, unique elements, unordered.
+
+Why     : To ensure uniqueness + fast operations.
+When    : Uniqueness needed, order not important, fast access.
+How     : Uses hashing internally via HashMap.
+Methods : add, remove, contains, size, clear, iterator, clone, toArray, etc.
