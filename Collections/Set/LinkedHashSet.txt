@@ -1,0 +1,63 @@
+==================================================================================================================
+                                        LinkedHashSet
+==================================================================================================================                             
+🔹 Definition :
+----------------
+ -> LinkedHashSet is a class in Java that implements the Set interface and extends HashSet.
+ -> It stores unique elements like a HashSet but also maintains the insertion order of elements using a linked list internally.
+
+ 🧩 In simple words :
+---------------------
+It is a combination of HashSet and LinkedList —
+it gives you fast access (like HashSet) and ordered elements (like LinkedList).
+
+🔹 1. What is LinkedHashSet?
+-----------------------------
+LinkedHashSet is a class in Java that:
+ -> Extends HashSet
+ -> Implements Set interface
+ -> Maintains insertion order
+
+So, it combines:
+✅ The fast performance of HashSet
+✅ The ordered behavior of a Linked List
+
+🔹 2. Why use LinkedHashSet?
+-----------------------------
+Use it when you:
+-> Want to store unique elements (no duplicates)
+-> And also preserve the order in which you inserted them
+Example:
+-> If you insert [B, D, A, C], it will always display [B, D, A, C].
+-> In a normal HashSet, the order could be random like [A, D, C, B].
+
+🔹 3. When to use LinkedHashSet :
+----------------------------------
+Situation	Use
+-> Just need uniqueness (don’t care about order)	Use HashSet
+-> Need uniqueness + sorted order	Use TreeSet
+-> Need uniqueness + insertion order	✅ Use LinkedHashSet
+
+🔹 4. How LinkedHashSet works internally :
+-------------------------------------------
+It is built on:
+-> A HashMap for storing elements (like HashSet)
+-> A doubly linked list that maintains insertion order
+-> So it is slightly slower than HashSet, but still very efficient (O(1) time for add, remove, search).
+
+
+
+
+
+
+
+Summary Comparison :
+---------------------
+| Feature            | HashSet         | LinkedHashSet            | TreeSet                |
+| ------------------ | --------------- | ------------------------ | ---------------------- |
+| Order              | No order        | ✅ Insertion order       | ✅ Sorted order       |
+| Allows null        | Yes (1 element) | Yes (1 element)          | No (for natural order) |
+| Performance        | Fastest         | Slightly slower          | Slower (sorted tree)   |
+| Internal Structure | HashMap         | HashMap + LinkedList     | Red-Black Tree         |
+| Use When           | Just unique     | Unique + Insertion order | Unique + Sorted order  |
+
