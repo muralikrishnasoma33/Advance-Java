@@ -1,0 +1,104 @@
+============================================================================================================
+                                      Tree Set
+============================================================================================================                                      
+
+1️⃣ Definition of TreeSet :
+--------------------------
+ -> TreeSet is a SortedSet implementation in Java that stores elements in ascending order (natural order) or 
+    according to a custom Comparator.
+ -> Internally, it uses a Red-Black Tree, which is a self-balancing binary search tree.
+ -> Duplicates are not allowed (like all Set implementations).
+
+ 2️⃣ Why use TreeSet?
+---------------------
+ -> You need a Set (no duplicates) and also sorted order.
+ -> Provides efficient searching, insertion, and deletion (O(log n)) because of the tree structure.
+ -> Supports range operations like subSet(), headSet(), tailSet().
+ -> Implements NavigableSet, which adds helpful methods for finding closest matches (ceiling, floor, etc.).
+
+ 3️⃣ When to use TreeSet?
+-------------------------
+ -> When elements must be automatically sorted.
+ -> When you need efficient search, min/max retrieval, or range queries.
+ -> Example use cases:
+        - Store unique student scores and display them sorted.
+        - Maintain a sorted leaderboard.
+        - Implement a priority-based task list (with custom comparator).
+
+4️⃣ How to use TreeSet :
+------------------------
+import java.util.*;
+
+public class TreeSetExample {
+    public static void main(String[] args) {
+        // Natural ordering
+        TreeSet<Integer> numbers = new TreeSet<>();
+        numbers.add(50);
+        numbers.add(10);
+        numbers.add(30);
+        numbers.add(20);
+
+        System.out.println(numbers); // Output: [10, 20, 30, 50]
+
+        // Custom ordering using Comparator (descending)
+        TreeSet<Integer> descNumbers = new TreeSet<>(Comparator.reverseOrder());
+        descNumbers.addAll(numbers);
+        System.out.println(descNumbers); // Output: [50, 30, 20, 10]
+    }
+}
+
+
+---------------------------------------------------------------------------------------
+|                                TreeSet Methods                                      |
+---------------------------------------------------------------------------------------                             
+| Method                              | Description                                   |
+| ----------------------------------- | --------------------------------------------- |
+| `add(E e)`                          | Adds an element if not already present.       |
+| `addAll(Collection<? extends E> c)` | Adds all elements from another collection.    |
+| `clear()`                           | Removes all elements.                         |
+| `contains(Object o)`                | Checks if the element exists.                 |
+| `containsAll(Collection<?> c)`      | Checks if all elements exist.                 |
+| `isEmpty()`                         | Checks if the set is empty.                   |
+| `remove(Object o)`                  | Removes a specific element.                   |
+| `removeAll(Collection<?> c)`        | Removes all elements in the given collection. |
+| `retainAll(Collection<?> c)`        | Keeps only elements in the given collection.  |
+| `size()`                            | Returns number of elements.                   |
+| `iterator()`                        | Returns an iterator in **ascending order**.   |
+| `toArray()`                         | Converts TreeSet to an array.                 |
+| `toArray(T[] a)`                    | Converts TreeSet to a typed array.            |
+| `clone()`                           | Returns a shallow copy of the set.            |
+| `equals(Object o)`                  | Checks equality with another set.             |
+| `hashCode()`                        | Returns hash code for the set.                |
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+|                                            Methods from SortedSet                                                                  |
+--------------------------------------------------------------------------------------------------------------------------------------    
+| Method                                                               | Description                                                 |
+| -------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `comparator()`                                                       | Returns the comparator used for ordering (null if natural). |
+| `first()`                                                            | Returns the **first (lowest)** element.                     |
+| `last()`                                                             | Returns the **last (highest)** element.                     |
+| `headSet(E toElement)`                                               | Returns elements **less than toElement**.                   |
+| `headSet(E toElement, boolean inclusive)`                            | Returns elements ≤ or < `toElement` based on `inclusive`.   |
+| `tailSet(E fromElement)`                                             | Returns elements **≥ fromElement**.                         |
+| `tailSet(E fromElement, boolean inclusive)`                          | Returns elements ≥ or > `fromElement` based on `inclusive`. |
+| `subSet(E fromElement, E toElement)`                                 | Returns elements from `[fromElement, toElement)`.           |
+| `subSet(E fromElement, boolean fromInc, E toElement, boolean toInc)` | Range with inclusive/exclusive bounds.                      |
+
+
+-------------------------------------------------------------------------------------
+|                              Methods from NavigableSet                            |
+------------------------------------------------------------------------------------- 
+| Method                 | Description                                              |
+| ---------------------- | -------------------------------------------------------- |
+| `lower(E e)`           | Greatest element **< e**, or null if none.               |
+| `floor(E e)`           | Greatest element **≤ e**, or null if none.               |
+| `ceiling(E e)`         | Smallest element **≥ e**, or null if none.               |
+| `higher(E e)`          | Smallest element **> e**, or null if none.               |
+| `pollFirst()`          | Retrieves and removes the first element.                 |
+| `pollLast()`           | Retrieves and removes the last element.                  |
+| `descendingSet()`      | Returns a **reverse order** view of the set.             |
+| `descendingIterator()` | Iterator in **reverse order**.                           |
+| `navigableKeySet()`    | Returns a `NavigableSet` view of keys (same as TreeSet). |
