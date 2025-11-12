@@ -1,0 +1,35 @@
+
+🧠 Hierarchy:
+--------------
+Collection
+   └── Queue
+         └── Deque
+               ├── LinkedList
+               └── ArrayDeque
+
+
+
+🔹 Similarities between ArrayDeque and LinkedList :
+-----------------------------------------------------
+| Feature                                                | Description                                              |
+| ------------------------------------------------------ | -------------------------------------------------------- |
+| ✅ Both implement **Deque interface**                   | So both support **add/remove from both ends**            |
+| ✅ Both can act as **Queue (FIFO)** or **Stack (LIFO)** | Using addFirst(), addLast(), removeFirst(), removeLast() |
+| ✅ Both are **non-synchronized**                        | So they are **not thread-safe**                          |
+| ✅ Both **don’t have capacity limits**                  | They grow as needed                                      |
+| ✅ Both **don’t allow random access by index**          | (Unlike ArrayList)                                       |
+
+
+🔹 Differences between ArrayDeque and LinkedList :
+-----------------------------------------------------
+| Feature                   | **ArrayDeque**                                            | **LinkedList**                                                            |
+| ------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------- |
+| 🧩 **Internal Structure** | Uses a **resizable circular array**                       | Uses a **doubly linked list** (nodes with prev & next)                    |
+| 🧠 **Memory Usage**       | More memory-efficient (just stores data in array)         | Higher memory usage (each element has node overhead)                      |
+| 🚫 **Null Elements**      | ❌ Not allowed                                             | ✅ Allowed                                                                 |
+| ⚡ **Performance**         | **Faster** for add/remove (less overhead, cache friendly) | Slightly **slower** due to node creation and garbage collection           |
+| 🧵 **Thread Safety**      | ❌ Not synchronized                                        | ❌ Not synchronized                                                        |
+| 🧱 **Random Access**      | ❌ Not supported                                           | ❌ Not supported                                                           |
+| 🔁 **Iteration Order**    | Maintains insertion order                                 | Maintains insertion order                                                 |
+| ⚙️ **Implements**         | Only `Deque` and `Queue`                                  | `Deque`, `Queue`, and `List` (so supports list methods like `get(index)`) |
+| 🧮 **Use Case**           | Better for **stack/queue operations**                     | Better when **frequent insertions/removals** happen anywhere in list      |
