@@ -33,3 +33,12 @@ Collection
 | 🔁 **Iteration Order**    | Maintains insertion order                                 | Maintains insertion order                                                 |
 | ⚙️ **Implements**         | Only `Deque` and `Queue`                                  | `Deque`, `Queue`, and `List` (so supports list methods like `get(index)`) |
 | 🧮 **Use Case**           | Better for **stack/queue operations**                     | Better when **frequent insertions/removals** happen anywhere in list      |
+
+
+
+🧠 Explanation:
+-----------------
+✅ Both behave same for add, remove, peek, push, pop (because both are Deques).
+✅ LinkedList allows index-based operations, because it also implements the List interface.
+❌ ArrayDeque doesn’t support index-based insertion.
+✅ ArrayDeque is faster and more memory-efficient internally.
