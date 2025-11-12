@@ -1,0 +1,78 @@
+==============================================================================================================
+                                     Deque
+==============================================================================================================                                                                     
+🔹 1. Definition 
+------------------
+ -> Deque (pronounced “deck”) = Double-Ended Queue
+ -> A Deque is a Queue that allows insertion and removal of elements from both ends — front (head) and rear (tail).
+ -> It extends the Queue interface.
+
+
+🧠 Hierarchy:
+--------------
+Collection
+   └── Queue
+         └── Deque
+               ├── LinkedList
+               └── ArrayDeque
+
+🔹 2. Why Deque?
+-----------------
+We use Deque when we want more flexibility than a normal Queue:
+ -> Insert/remove elements from both ends
+ -> Can act as:
+ -> Queue (FIFO)
+ -> Stack (LIFO)
+✅ Example use cases:
+       - Undo/Redo operations in editors
+       - Browser history
+       - Sliding window problems
+
+🔹 3. When to Use Deque
+-------------------------
+Use Deque when:
+ -> You need fast insertion/removal from both ends
+ -> You want Queue + Stack behavior
+ -> Implementing task scheduling, palindrome checking, or buffers.
+
+🔹 4. How Deque Works
+-----------------------
+  --> Front (head) → operations like addFirst(), removeFirst()
+  --> Rear (tail) → operations like addLast(), removeLast()
+
+🔹 5. Methods in Deque :
+-------------------------
+| **Operation**       | **Head (Front)**  | **Tail (Rear)**  |
+| ------------------- | ----------------- | ---------------- |
+| Insert (throws ex)  | `addFirst(E e)`   | `addLast(E e)`   |
+| Insert (safe)       | `offerFirst(E e)` | `offerLast(E e)` |
+| Remove (throws ex)  | `removeFirst()`   | `removeLast()`   |
+| Remove (safe)       | `pollFirst()`     | `pollLast()`     |
+| Examine (throws ex) | `getFirst()`      | `getLast()`      |
+| Examine (safe)      | `peekFirst()`     | `peekLast()`     |
+
+
+🔹 6. Implementations of Deque :
+---------------------------------
+| **Class**    | **Description**                       |
+| ------------ | ------------------------------------- |
+| `ArrayDeque` | Fast, array-based, no null allowed    |
+| `LinkedList` | Implements Deque & Queue, allows null |
+
+🔹 8. Key Points 
+------------------
+Deque = Double-Ended Queue
+    - Can act as Queue (FIFO) or Stack (LIFO)
+    - Insert/remove from both ends
+    - Main implementations: LinkedList, ArrayDeque
+    - Supports duplicates, null depends on implementation (ArrayDeque no null)
+   
+    
+
+| **Category**              | **Methods**                                                                          | **Count** |
+| ------------------------- | ------------------------------------------------------------------------------------ | --------- |
+| Deque-specific            | `addFirst`, `addLast`, `offerFirst`, `offerLast`, `removeFirst`, `
+                               removeLast`, `pollFirst`, `pollLast`, `getFirst`, `getLast`, `peekFirst`, `peekLast`| 12        |
+| Inherited from Queue      | `add`, `offer`, `remove`, `poll`, `element`, `peek`                                  | 6         |
+| Inherited from Collection | `size`, `isEmpty`, `contains`, `clear`, `iterator`, etc.                             | ~10+      |
+| Stack-style convenience   | `push`, `pop`                                                                        | 2         |
