@@ -1,0 +1,85 @@
+==============================================================================================================
+                                      Queue
+==============================================================================================================                                      
+🔹 1. Definition / Explanation 
+---------------------------------
+ --> The Queue Interface in Java is part of the Collections Framework and is present in the package:
+ -->  A Queue is a collection used to store elements before processing,
+      usually following the FIFO (First In, First Out) order —
+      meaning, the element inserted first is removed first.
+
+Hierarchy :
+-------------
+      Collection (Interface)
+   └── Queue (Interface)
+         ├── Deque (Interface)
+         │     ├── LinkedList
+         │     └── ArrayDeque
+         ├── PriorityQueue
+         └── BlockingQueue (in java.util.concurrent)
+
+🔹 2. Why Queue?
+-------------------
+ -> We use a Queue when:We need to store data temporarily before using it.
+ -> We want to process elements in the same order they were inserted (FIFO).
+ -> We need a waiting line for tasks — like printer jobs, requests, or customer service tickets.
+ -> We want to implement schedulers, buffers, or messaging systems.
+   ✅ Purpose:
+    To hold elements before processing them in an ordered way.
+
+🔹 3. When to Use Queue
+-------------------------
+Use a Queue when:
+ -> You want elements to be processed one by one in insertion order.
+ -> You’re working on task scheduling, job management, or data buffering.
+ -> You’re implementing producer-consumer or multithreading systems.
+💡 Example:
+ -> Job queues in an operating system.
+ -> Printing documents (first document prints first).
+ -> Sending and receiving messages.
+
+🔹 4. How Queue Works
+----------------------
+Queue works in FIFO order:
+➡️ Add (insert) → from the rear (tail)
+➡️ Remove (process) → from the front (head)
+
+🔹 5. Key Points
+------------------
+ -> Queue follows FIFO order (First In, First Out).
+ -> Queue allows duplicates ✅.
+ -> Queue may allow null (depends on implementation).
+ -> No direct method like get(index) to access elements by position ❌.
+ Common implementations:
+    - LinkedList
+    - PriorityQueue
+    - ArrayDeque
+
+🔹 6. Summary Table :
+----------------------
+| **Feature**              | **Description**                                     |
+| ------------------------ | --------------------------------------------------- |
+| **Interface Name**       | Queue                                               |
+| **Package**              | java.util                                           |
+| **Extends**              | Collection                                          |
+| **Order Type**           | FIFO                                                |
+| **Allows Duplicates**    | ✅ Yes                                             | 
+| **Allows Null**          | Depends on implementation                           |
+| **Access Type**          | Sequential (no random access)                       |
+| **Main Implementations** | LinkedList, PriorityQueue, ArrayDeque               |
+| **Main Methods**         | add(), offer(), remove(), poll(), element(), peek() |
+
+Methods in Queue :
+------------------
+| **Method**   | **Action**     | **Throws Exception if Fails?** | **Returns**           | **When Used**                |
+| ------------ | -------------- | ------------------------------ | --------------------- | ---------------------------- |
+| `add(E e)`   | Insert element | ✅ Yes                          | `true`                | Add element to queue         |
+| `offer(E e)` | Insert element | ❌ No                           | `true`/`false`        | Add safely without exception |
+| `remove()`   | Remove head    | ✅ Yes                          | Head element          | Remove first element         |
+| `poll()`     | Remove head    | ❌ No                           | Head element / `null` | Remove safely                |
+| `element()`  | View head      | ✅ Yes                          | Head element          | See first element            |
+| `peek()`     | View head      | ❌ No                           | Head element / `null` | See safely                   |
+
+
+
+
