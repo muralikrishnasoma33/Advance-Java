@@ -31,7 +31,7 @@ public class Deque1 {
        
         //addFirst(E e)   [Same as offerFirst]
         System.out.println("\n");
-        ystem.out.println("========== Deque Specific methods ===========");
+        System.out.println("========== Deque Specific methods ===========");
         System.out.println("-------------- addFirst(E e) --------------");
         DE.addFirst("Vishakapatnam");
         System.out.println(DE);
