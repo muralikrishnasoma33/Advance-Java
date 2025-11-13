@@ -205,7 +205,6 @@ public class Treeset {
         System.out.println("\n");                
         System.out.println("================== SortedSet Methods ==================");                
         //comparator() --> Returns the comparator used for ordering (null if natural).
-
         Comparator<String> sortedByName = (s1, s2) -> {
             String part1 = s1.split("\\. ")[1];
             String part2 = s2.split("\\. ")[1];
