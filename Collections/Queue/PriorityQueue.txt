@@ -1,0 +1,79 @@
+=============================================================================================================
+                                  PriorityQueue
+=============================================================================================================                                  
+🔹 1. Definition :
+-------------------
+ -> A PriorityQueue is a class in Java’s Collections Framework that represents a Queue where elements 
+are ordered based on their priority, not their insertion order.
+✅ It is part of the java.util package.
+✅ It implements the Queue interface.
+✅ It uses a heap data structure (binary heap) internally.
+
+🔹 2. Why PriorityQueue?
+-------------------------
+-> Normally, a Queue follows FIFO (First In, First Out) order.
+-> But sometimes you need to process elements based on priority, not on the order they were inserted.
+For example:
+ -> In a task scheduler, high-priority tasks must execute first.
+ -> In Dijkstra’s shortest path, smallest distances must be processed first.
+ -> That’s where PriorityQueue is used.
+
+ 🔹 3. When to Use PriorityQueue?
+----------------------------------
+Use PriorityQueue when:
+ -> You need to process elements by priority (not insertion order).
+ -> You need an efficient way to access the smallest or largest element.
+
+
+🔹 4. How PriorityQueue Works
+-------------------------------
+ -> Internally, it uses a binary heap (min-heap by default).
+ -> The head of the queue is the smallest element (natural ordering) or according to a custom 
+    Comparator you provide.
+ -> Null elements are not allowed.
+ -> Duplicate elements are allowed.
+
+➤ Syntax :
+-----------
+import java.util.PriorityQueue;
+PriorityQueue<Integer> pq = new PriorityQueue<>();  // Natural ordering (ascending)
+
+Or with custom comparator:
+--------------------------
+PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder()); // Descending order
+
+
+PriorityQueue Methods (All + Inherited) – Quick Reference :
+============================================================
+| **Category**               | **Method**                                                             | **Description**                                         |
+| -------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------- |
+| **Add / Insert**           | `add(E e)`                                                             | Inserts element (throws exception if fails).            |
+|                            | `offer(E e)`                                                           | Inserts element safely (returns `false` if fails).      |
+|                            | `addAll(Collection<? extends E> c)`                                    | Adds all elements from another collection.              |
+| **Retrieve (Head / Peek)** | `peek()`                                                               | Returns head without removing (null if empty).          |
+|                            | `element()`                                                            | Returns head without removing (exception if empty).     |
+| **Remove**                 | `poll()`                                                               | Removes and returns head (null if empty).               |
+|                            | `remove()`                                                             | Removes and returns head (exception if empty).          |
+|                            | `remove(Object o)`                                                     | Removes a single instance of specified element.         |
+|                            | `removeAll(Collection<?> c)`                                           | Removes all elements present in given collection.       |
+|                            | `retainAll(Collection<?> c)`                                           | Keeps only elements present in given collection.        |
+|                            | `clear()`                                                              | Removes all elements.                                   |
+| **Check / Info**           | `size()`                                                               | Returns number of elements.                             |
+|                            | `isEmpty()`                                                            | Returns true if queue is empty.                         |
+|                            | `contains(Object o)`                                                   | Checks if element is present.                           |
+|                            | `containsAll(Collection<?> c)`                                         | Checks if all elements in given collection are present. |
+| **Iteration / Conversion** | `iterator()`                                                           | Returns iterator (order not guaranteed).                |
+|                            | `descendingIterator()`                                                 | **Not supported** in PriorityQueue (Queue only).        |
+|                            | `spliterator()`                                                        | Returns Spliterator for streams.                        |
+|                            | `toArray()`                                                            | Converts queue to Object array.                         |
+|                            | `<T> T[] toArray(T[] a)`                                               | Converts queue to typed array.                          |
+| **Comparator / Ordering**  | `comparator()`                                                         | Returns the comparator used (null if natural ordering). |
+| **Streams (Java 8+)**      | `stream()`                                                             | Returns sequential stream of elements.                  |
+|                            | `parallelStream()`                                                     | Returns parallel stream of elements.                    |
+| **Constructors**           | `PriorityQueue()`                                                      | Default capacity + natural ordering.                    |
+|                            | `PriorityQueue(int initialCapacity)`                                   | Custom initial capacity.                                |
+|                            | `PriorityQueue(int initialCapacity, Comparator<? super E> comparator)` | Custom capacity + comparator.                           |
+|                            | `PriorityQueue(Collection<? extends E> c)`                             | Build from collection.                                  |
+|                            | `PriorityQueue(PriorityQueue<? extends E> pq)`                         | Build from another PriorityQueue.                       |
+|                            | `PriorityQueue(SortedSet<? extends E> ss)`                             | Build from SortedSet.                                   |
+
