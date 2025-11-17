@@ -1,0 +1,159 @@
+=============================================================================================================================
+                                      Maps
+=============================================================================================================================                                  
+1️⃣ What is a Map?
+--------------------
+A Map is an object that stores key-value pairs.
+* Each key maps to exactly one value.
+* Keys must be **unique**.
+* Values can be **duplicate**.
+Think of it like a **dictionary**:
+* Key → Word
+* Value → Meaning
+
+Example:
+------------
+Map<String, Integer> ageMap = new HashMap<>();
+ageMap.put("Alice", 25);
+ageMap.put("Bob", 30);
+System.out.println(ageMap); // {Alice=25, Bob=30}
+
+2️⃣ Key Features of Map
+-----------------------
+| Feature           | Explanation                                                                                                      |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Key uniqueness    | No two keys can be the same. If you put a value with an existing key, it **overwrites** the old value.           |
+| Value duplication | Multiple keys can have the same value.                                                                           |
+| Null allowed      | Depends on implementation. (HashMap allows one null key, multiple null values; TreeMap doesn’t allow null keys.) |
+| Not a Collection  | Map **does not extend Collection**; it’s a separate interface.                                                   |
+
+3️⃣ Common Map Implementations
+-------------------------------
+a. HashMap
+------------
+* Unordered, fast (O(1) for get/put).
+* Allows `null` key and `null` values.
+
+```java
+Map<String, Integer> hashMap = new HashMap<>();
+hashMap.put("Alice", 25);
+hashMap.put("Bob", 30);
+```
+
+b. LinkedHashMap
+------------------
+* Maintains **insertion order**.
+* Slightly slower than HashMap.
+
+```java
+Map<String, Integer> linkedMap = new LinkedHashMap<>();
+linkedMap.put("Alice", 25);
+linkedMap.put("Bob", 30);
+```
+
+c. TreeMap
+------------
+* Sorted order based on keys (natural order or custom comparator).
+* No null keys allowed.
+
+```java
+Map<String, Integer> treeMap = new TreeMap<>();
+treeMap.put("Bob", 30);
+treeMap.put("Alice", 25); // Will print in alphabetical order: Alice, Bob
+```
+
+d. Hashtable
+--------------
+* **Thread-safe** (synchronized).
+* Legacy class, rarely used in new code.
+* No null keys or values allowed.
+
+---
+
+4️⃣ Common Map Methods
+--------------------------
+| Method                        | Description                                   |
+| ----------------------------- | --------------------------------------------- |
+| `put(K key, V value)`         | Adds a key-value pair.                        |
+| `get(Object key)`             | Returns the value for a key.                  |
+| `remove(Object key)`          | Removes the key-value pair.                   |
+| `containsKey(Object key)`     | Checks if key exists.                         |
+| `containsValue(Object value)` | Checks if value exists.                       |
+| `keySet()`                    | Returns a Set of all keys.                    |
+| `values()`                    | Returns a Collection of all values.           |
+| `entrySet()`                  | Returns a Set of key-value pairs (Map.Entry). |
+| `size()`                      | Returns number of key-value pairs.            |
+| `clear()`                     | Removes all entries.                          |
+
+---
+
+5️⃣ Iterating a Map
+-------------------
+There are multiple ways:
+a. Using keySet()
+
+```java
+for (String key : ageMap.keySet()) {
+    System.out.println(key + " = " + ageMap.get(key));
+}
+```
+
+b. Using entrySet()
+
+```java
+for (Map.Entry<String, Integer> entry : ageMap.entrySet()) {
+    System.out.println(entry.getKey() + " = " + entry.getValue());
+}
+```
+
+c. Using forEach() (Java 8+)
+
+```java
+ageMap.forEach((key, value) -> System.out.println(key + " = " + value));
+```
+
+---
+
+6️⃣ Example: HashMap
+
+```java
+import java.util.*;
+
+public class MapExample {
+    public static void main(String[] args) {
+        Map<String, Integer> map = new HashMap<>();
+        
+        map.put("Alice", 25);
+        map.put("Bob", 30);
+        map.put("Charlie", 25);
+        
+        System.out.println("Map: " + map);
+        System.out.println("Bob's age: " + map.get("Bob"));
+        
+        map.remove("Alice");
+        System.out.println("After removing Alice: " + map);
+        
+        System.out.println("Iterating over Map:");
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " = " + entry.getValue());
+        }
+    }
+}
+```
+
+**Output:**
+
+```
+Map: {Alice=25, Bob=30, Charlie=25}
+Bob's age: 30
+After removing Alice: {Bob=30, Charlie=25}
+Iterating over Map:
+Bob = 30
+Charlie = 25
+```
+
+---
+
+If you want, I can make a **diagram showing HashMap vs LinkedHashMap vs TreeMap** and how keys/values are stored—it makes it **super easy to visualize**.
+
+Do you want me to do that?
