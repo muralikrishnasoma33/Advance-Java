@@ -162,7 +162,7 @@ Replaces value for only existing key.
 
 🌟6. SIMPLE PROGRAM USING ALL METHODS**
 ------------------------------------------
-```java
+``java
 import java.util.*;
 
 public class HashMapDemo {
