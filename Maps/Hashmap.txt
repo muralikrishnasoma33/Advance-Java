@@ -1,0 +1,200 @@
+================================================================================================================ 
+                                     HashMap
+================================================================================================================                                   
+1. HASHMAP — IN DEPTH DEFINITION :
+===================================
+HashMap is a key–value based data structure in Java that:
+
+* stores data in buckets using hashing
+* allows one null key and multiple null values
+* does NOT maintain any order
+* does NOT allow duplicate keys
+* gives **O(1)** average time for insertion, deletion and lookup
+* internally uses **array + linked list + red-black tree (from Java 8)** to store values efficiently
+
+Internal core idea :
+--------------------
+HashMap = Hashing + Buckets + Key-Value Pairs
+
+Keys are converted to bucket index using this formula:
+
+index = hashcode(key) & (capacity - 1)
+
+2. WHY HashMap? (Why should we use it?) :
+==========================================
+✔ 1. Fast operations :
+-----------------------
+HashMap gives **constant time O(1)** operations for:
+* put()
+* get()
+* remove()
+* containsKey()
+(because it jumps directly to the bucket)
+
+✔ 2. Stores key–value pairs :
+------------------------------
+You search using **key**, not index.
+
+✔ 3. Keys must be unique :
+---------------------------
+Prevents duplicate keys → helpful for:
+* employees (id → name)
+* students (roll → marks)
+* items (id → price)
+
+✔ 4. Allows null values :
+--------------------------
+Useful when data is optional.
+
+✔ 5. Very flexible :
+----------------------
+Any objects can be keys or values if they implement:
+
+* `hashCode()`
+* `equals()`
+
+3. WHEN to use HashMap?
+=======================
+✔ When you want **fast searching**
+Example: find student by roll number.
+
+✔ When order does NOT matter
+If you want order → use LinkedHashMap or TreeMap.
+
+✔ When keys must be unique
+(HashMap automatically handles duplicates)
+
+✔ When you want key-value mapping
+Example:
+```
+username → password
+product → price
+id → name
+```
+
+✔ When you don’t want Synchronization
+
+HashMap is faster because it is **not thread-safe**.
+(For thread-safe version → use ConcurrentHashMap)
+
+---
+
+4. INTERNAL WORKING (in depth but simple)  :
+==========================================
+Step 1 → `put(key, value)`
+--------------------------
+1. hashcode of key is generated
+2. index = hashcode & (capacity - 1)
+3. HashMap goes to that **bucket**
+4. If bucket empty → add new node
+5. If bucket has nodes → collision happens
+6. Collision resolved by:
+
+   * LinkedList (Java 7)
+   * LinkedList + Red-Black Tree (Java 8)
+
+**Treeing happens if a bucket has ≥ 8 nodes.**
+
+Step 2 → `get(key)`
+---------------------
+1. hashcode() of key
+2. find bucket
+3. compare keys using **equals()**
+4. Return the value
+
+Step 3 → Rehashing
+--------------------
+When size exceeds:
+capacity * loadFactor
+
+New array created (double size)
+All entries redistributed.
+
+Default loadFactor = **0.75**
+
+
+5. ALL IMPORTANT METHODS IN HASHMAP
+==========================================
+✔put(K, V)
+------------
+Adds a key-value pair
+If key exists → replaces old value
+✔ get(K)
+---------
+Returns value for the key
+If not present → returns `null`
+✔ remove(K)
+------------
+Removes entry for the key
+✔ containsKey(K)
+----------------
+Checks if key exists
+✔ containsValue(V)
+--------------------
+Checks if value exists (slow: O(n))
+✔ size()
+Number of entries in map
+✔ isEmpty()
+-----------
+Checks if map is empty
+✔ clear()
+---------
+Removes all entries
+✔ keySet()
+----------
+Returns all keys
+✔ values()
+-----------
+Returns all values
+✔ entrySet()
+-------------
+Returns all key-value pairs as `Entry` objects
+Most used for iteration.
+✔ putIfAbsent(K, V)
+--------------------
+Adds only if key does NOT exist
+Very useful.
+✔ replace(K, V)
+-----------------
+Replaces value for only existing key.
+
+
+
+🌟6. SIMPLE PROGRAM USING ALL METHODS**
+------------------------------------------
+```java
+import java.util.*;
+
+public class HashMapDemo {
+    public static void main(String[] args) {
+
+        HashMap<Integer, String> map = new HashMap<>();
+
+        map.put(101, "Murali");
+        map.put(102, "Krishna");
+        map.put(103, "Soma");
+
+        System.out.println("Map: " + map);
+
+        System.out.println("Get 102: " + map.get(102));
+
+        System.out.println("Contains key 101? " + map.containsKey(101));
+
+        System.out.println("Keys: " + map.keySet());
+
+        System.out.println("Values: " + map.values());
+
+        System.out.println("Entries: " + map.entrySet());
+
+        map.putIfAbsent(104, "Extra");
+        System.out.println("After putIfAbsent: " + map);
+
+        map.remove(103);
+        System.out.println("After remove: " + map);
+
+        map.replace(101, "Murali Updated");
+        System.out.println("After replace: " + map);
+
+        System.out.println("Size: " + map.size());
+    }
+}
