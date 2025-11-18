@@ -1,0 +1,232 @@
+============================================================================================================
+                                       TreeMap
+============================================================================================================
+============================================================================================================                                       
+✅ 1. What is TreeMap?
+------------------------
+**TreeMap** is a class in Java that **stores key–value pairs in sorted order** (ascending order of keys).
+It uses a **Red-Black Tree** internally.
+✔ Keys sorted automatically
+✔ No duplicates
+✔ Stores elements in **logarithmic time (O(log n))**
+
+✅ 2. Why TreeMap?
+-------------------
+Use TreeMap when you want a **Map + Sorting**.
+Example:
+* You want names in alphabetical order
+* You want numbers sorted automatically
+* You want a map where you can find **next higher key, lower key** etc.
+HashMap does **NOT** maintain order.
+LinkedHashMap preserves **insertion order**.
+TreeMap preserves **sorted order**.
+
+✅ 3. How TreeMap Works Internally?
+-----------------------------------
+TreeMap stores entries in a **Red-Black Tree**.
+So operations:
+* insertion
+* deletion
+* search
+take **O(log n)** time.
+Keys must be:
+* **Comparable** (String, Integer, etc)
+  OR
+* You must pass a **Comparator**
+
+✅ 4. When to Use TreeMap?
+---------------------------
+Use TreeMap when:
+* You need **sorted keys**
+* You need **range operations**
+  * firstKey()
+  * lastKey()
+  * higherKey()
+  * lowerKey()
+* You need a **NavigableMap**
+
+Don't use it when:
+* You want fastest performance → use HashMap
+* You want insertion order → LinkedHashMap
+
+⭐ 5. TreeMap Implements What?
+-------------------------------
+TreeMap implements:
+
+| Interface        | Meaning                                                  |
+| ---------------- | -------------------------------------------------------- |
+| **Map**          | Key-value structure                                      |
+| **SortedMap**    | Keys sorted                                              |
+| **NavigableMap** | Extra navigation methods (higher, lower, floor, ceiling) |
+
+⭐ 6. TreeMap Important Methods (All)
+------------------------------------
+🔹 Specific TreeMap Methods
+-----------------------------
+| **Method / Constructor**                           | **Description (Simple)**                      |
+| -------------------------------------------------- | --------------------------------------------- |
+| `TreeMap()`                                        | Creates empty TreeMap with natural ordering.  |
+| `TreeMap(Comparator<? super K> comparator)`        | Creates empty TreeMap with custom comparator. |
+| `TreeMap(Map<? extends K,? extends V> m)`          | Creates TreeMap from another map.             |
+| `TreeMap(SortedMap<K,? extends V> m)`              | Creates TreeMap from SortedMap.               |
+| `Object clone()`                                   | Returns a shallow copy of the TreeMap.        |
+
+Common Methods :
+-------------------
+| **Method**                                 | **Description (Simple)**             |
+| ------------------------------------------ | ------------------------------------ |
+| `clear()`                                  | Deletes all entries.                 |
+| `containsKey(Object key)`                  | Checks if key exists.                |
+| `containsValue(Object value)`              | Checks if a value exists.            |
+| `equals(Object o)`                         | Compares two maps.                   |
+| `get(Object key)`                          | Returns value for key.               |
+| `getOrDefault(Object key, V defaultValue)` | Returns default if key not found.    |
+| `hashCode()`                               | Returns hash of map.                 |
+| `isEmpty()`                                | Checks if empty.                     |
+| `put(K key, V value)`                      | Insert/update key-value.             |
+| `putAll(Map<? extends K,? extends V> m)`   | Adds all entries from another map.   |
+| `putIfAbsent(K key, V value)`              | Inserts only if key not present.     |
+| `remove(Object key)`                       | Removes key.                         |
+| `remove(Object key, Object value)`         | Removes only if key maps to value.   |
+| `replace(K key, V value)`                  | Replace value only if key exists.    |
+| `replace(K key, V oldValue, V newValue)`   | Replace only if oldValue matches.    |
+| `replaceAll(BiFunction)`                   | Apply function to every entry.       |
+| `size()`                                   | Returns number of entries.           |
+| `values()`                                 | Collection of values.                |
+| `entrySet()`                               | Set of key-value pairs.              |
+| `keySet()`                                 | Set of keys.                         |
+| `forEach(BiConsumer)`                      | Loop through all entries.            |
+| `compute(K key, BiFunction)`               | Recalculate value.                   |
+| `computeIfAbsent(K key, Function)`         | Compute value only when key missing. |
+| `computeIfPresent(K key, BiFunction)`      | Compute value only when key exists.  |
+| `merge(K key, V value, BiFunction)`        | Combines old and new value.          |
+
+
+
+SortedMap:
+=============
+📘 SortedMap — Definition (for comparison)
+
+SortedMap is an interface that represents a Map whose keys are always sorted in ascending order.
+It defines methods to retrieve the first key, last key, sub ranges, etc., but does not define how sorting is implemented.
+
+TreeMap is the main class that implements SortedMap.
+
+🔹 SortedMap Methods
+---------------------
+| **Method**                   | **Description (Simple)**                                        |
+| ---------------------------- | --------------------------------------------------------------- |
+| `comparator()`               | Returns the comparator used for sorting (null = natural order). |
+| `firstKey()`                 | Returns the first (smallest) key.                               |
+| `lastKey()`                  | Returns the last (largest) key.                                 |
+| `headMap(K toKey)`           | Returns keys `< toKey`.                                         |
+| `tailMap(K fromKey)`         | Returns keys `>= fromKey`.                                      |
+| `subMap(K fromKey, K toKey)` | Returns keys in range `[fromKey, toKey)`.                       |
+
+
+NavigableMap :
+==============
+📘 NavigableMap — Definition (for comparison)
+
+NavigableMap is an extension of SortedMap that supports navigation through keys.
+It provides methods to find the nearest keys to a given key, such as:
+
+higher
+
+lower
+
+ceiling
+
+floor
+
+It also provides descending views and polling (remove-first/last) methods.
+TreeMap is the main class that implements NavigableMap.
+
+🔹 NavigableMap Methods (extra powerful)
+-----------------------------------------
+
+| **Method**                                                                 | **Description (Simple)**                                |
+| -------------------------------------------------------------------------- | ------------------------------------------------------- |
+| **lowerKey(K key)**                                                        | Returns greatest key **< key**                          |
+| **floorKey(K key)**                                                        | Returns greatest key **≤ key**                          |
+| **ceilingKey(K key)**                                                      | Returns smallest key **≥ key**                          |
+| **higherKey(K key)**                                                       | Returns smallest key **> key**                          |
+| **lowerEntry(K key)**                                                      | Returns entry with greatest key < key                   |
+| **floorEntry(K key)**                                                      | Returns entry with greatest key ≤ key                   |
+| **ceilingEntry(K key)**                                                    | Returns entry with smallest key ≥ key                   |
+| **higherEntry(K key)**                                                     | Returns entry with smallest key > key                   |
+| **firstEntry()**                                                           | Returns entry with smallest key                         |
+| **lastEntry()**                                                            | Returns entry with largest key                          |
+| **pollFirstEntry()**                                                       | Removes and returns first entry                         |
+| **pollLastEntry()**                                                        | Removes and returns last entry                          |
+| **descendingMap()**                                                        | Returns a reverse-sorted map view                       |
+| **descendingKeySet()**                                                     | Returns a reverse-sorted key set                        |
+| **subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive)** | Returns a range view with inclusive/exclusive endpoints |
+| **headMap(K toKey, boolean inclusive)**                                    | Returns a view of keys < or ≤ toKey                     |
+| **tailMap(K fromKey, boolean inclusive)**                                  | Returns a view of keys ≥ or > fromKey                   |
+
+⭐ 7. Simple Program (Very Easy)
+----------------------------------
+```java
+import java.util.*;
+
+class Demo {
+    public static void main(String[] args) {
+
+        TreeMap<Integer, String> tm = new TreeMap<>();
+
+        tm.put(20, "Mahidhar");
+        tm.put(10, "KR");
+        tm.put(30, "Vibes");
+        tm.put(25, "Java");
+
+        System.out.println("TreeMap : " + tm);
+        System.out.println("First Key : " + tm.firstKey());
+        System.out.println("Last Key : " + tm.lastKey());
+        System.out.println("Higher Key of 20 : " + tm.higherKey(20));
+        System.out.println("Lower Key of 20 : " + tm.lowerKey(20));
+    }
+}
+
+### **Output**
+
+```
+TreeMap : {10=KR, 20=Mahidhar, 25=Java, 30=Vibes}
+First Key : 10
+Last Key : 30
+Higher Key of 20 : 25
+Lower Key of 20 : 10
+```
+
+
+⭐ 8. Difference Between SortedMap and NavigableMap
+------------------------------------------------------
+| Feature                      | SortedMap | NavigableMap |
+| ---------------------------- | --------- | ------------ |
+| Sorted order                 | ✔         | ✔            |
+| firstKey(), lastKey()        | ✔         | ✔            |
+| higher/lower/floor/ceiling   | ❌         | ✔            |
+| descending map               | ❌         | ✔            |
+| pollFirstEntry/pollLastEntry | ❌         | ✔            |
+
+TreeMap implements both → so TreeMap gets **all features**.
+
+---
+
+⭐ 9. Is there any big difference between TreeMap, SortedMap, NavigableMap?
+-----------------------------------------------------------------------------
+No.
+TreeMap **is a concrete class**.
+SortedMap and NavigableMap are **interfaces**.
+
+TreeMap = SortedMap + NavigableMap.
+
+---
+
+If you want, I can send:
+
+✅ TreeMap methods in a perfect copy-paste table
+✅ All methods with simple program examples
+✅ Comparison between HashMap, LinkedHashMap, TreeMap
+
+Just tell me **“send methods table”** or **“examples”**.
